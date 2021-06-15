@@ -19,6 +19,7 @@ document.querySelector('#calculate').onclick = function (event) {
   document.querySelector('#total-value span').innerText = sum;
 };
 
+function removeStuff () {
 let allButton = document.querySelectorAll('.btn-remove');
 for (let button of allButton) {
   button.onclick = function (e) {
@@ -27,8 +28,35 @@ for (let button of allButton) {
     this.parentNode.parentNode.remove(); //e.target,button
   };
 }
+}
+
 
 // document.querySelectorAll('.btn-remove').onclick = function (event) {
 //   console.log('Tiger');
 //   document.querySelector('.product').remove();
 // };
+removeStuff()
+
+document.querySelector('#create').onclick = function (event) {
+  const productName = document.querySelector('#productName').value
+  const productPrice = document.querySelector('#productPrice').value
+
+ document.querySelector('tbody').innerHTML += `  
+ 
+ <tr class="product">
+ <td class="name">
+   <span>${productName}</span>
+ </td>
+ <td class="price">$<span>${productPrice}</span></td>
+ <td class="quantity">
+   <input type="number" value="0" min="0" placeholder="Quantity" />
+ </td>
+ <td class="subtotal">$<span>0</span></td>
+ <td class="action">
+   <button class="btn btn-remove">Remove</button>
+ </td>
+</tr>
+`
+removeStuff()
+}
+
